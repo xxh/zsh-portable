@@ -16,6 +16,8 @@ RUN tar xf zsh-$ZSH_VER.tar.xz
 #
 WORKDIR zsh-$ZSH_VER
 RUN ./configure --disable-dynamic --prefix=$PWD/run --bindir=$PWD/run --enable-etcdir=./run/etc --enable-scriptdir=./run/scripts --enable-fndir=./run/functions --enable-function-subdirs --disable-site-fndir --without-tcsetpgrp
+ADD config.modules ./config.modules-new
+RUN cp config.modules-new config.modules
 RUN make && make install
 WORKDIR run
 RUN cp /lib/x86_64-linux-gnu/libtinfo.so.5 ./
