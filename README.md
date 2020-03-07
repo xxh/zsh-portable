@@ -1,7 +1,10 @@
 Build portable zsh.
 
+## Build and run
 ```
 ./build.sh
+cd ./result && tar -xvzf zsh-portable-Linux-x86_64.tar.gz
+./zsh.sh
 ```
 
 ## Related
