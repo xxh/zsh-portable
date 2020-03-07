@@ -16,9 +16,11 @@ RUN tar xf zsh-$ZSH_VER.tar.xz
 #
 WORKDIR zsh-$ZSH_VER
 RUN ./configure --disable-dynamic --prefix=$PWD/run --bindir=$PWD/run --enable-etcdir=./run/etc --enable-scriptdir=./run/scripts --enable-fndir=./run/functions --enable-function-subdirs --disable-site-fndir --without-tcsetpgrp
+ADD config.modules ./config.modules-new
+RUN cp config.modules-new config.modules
 RUN make && make install
 WORKDIR run
-RUN cp /lib/x86_64-linux-gnu/libtinfo.so.5* ./
+RUN cp /lib/x86_64-linux-gnu/libtinfo.so.5 ./
 RUN ln -s . run && mkdir etc && echo './zsh -fc "typeset -p fpath" | sed "s,./run,$PWD,g" > etc/zshenv  &&  ./zsh' > zsh.sh && chmod +x zsh.sh
-
+RUN rm zsh-*
 CMD tar -zcf /result/zsh-portable-`uname`-`uname -m`.tar.gz * && ls -sh1 /result
