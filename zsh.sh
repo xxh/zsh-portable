@@ -8,5 +8,6 @@ cd $CDIR
 export ZDOTDIR=$CDIR
 export PATH=$CDIR:$PATH
 export ZSH_DISABLE_COMPFIX=true
+export LD_LIBRARY_PATH=$CDIR:$LD_LIBRARY_PATH
 
 ./zsh "$@"
