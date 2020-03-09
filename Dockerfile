@@ -22,6 +22,5 @@ RUN make && make install
 WORKDIR run
 RUN cp /lib/x86_64-linux-gnu/libtinfo.so.5 /lib/x86_64-linux-gnu/libncurses.so.5 ./
 ADD zsh.sh .
-RUN ln -s . run && chmod +x zsh.sh
-RUN rm zsh-*
+RUN chmod +x zsh.sh && rm zsh-*
 CMD tar -zcf /result/zsh-portable-`uname`-`uname -m`.tar.gz * && ls -sh1 /result
