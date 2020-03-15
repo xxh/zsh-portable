@@ -2,3 +2,5 @@
 
 docker build . -f Dockerfile-alpine -t xxh/zsh-portable-alpine  #--no-cache --force-rm
 docker run --rm -v `pwd`/result:/result xxh/zsh-portable-alpine
+docker build . -f Dockerfile-portable-musl -t xxh/zsh-portable-musl  #--no-cache --force-rm
+docker run --rm -v `pwd`/result:/result xxh/zsh-portable-musl
