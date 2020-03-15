@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM alpine
 VOLUME /result
 
 ENV ZSH_VER 5.8
@@ -6,8 +6,7 @@ ENV ZSH_VER 5.8
 RUN mkdir -p /zsh /result
 
 WORKDIR /zsh
-RUN apt update && apt install -y wget mc make xz-utils build-essential libncurses-dev git python locales
-RUN locale-gen en_US.UTF-8
+RUN apk update && apk add wget mc make alpine-sdk ncurses-dev git python
 RUN wget https://downloads.sourceforge.net/project/zsh/zsh/$ZSH_VER/zsh-$ZSH_VER.tar.xz 
 RUN tar xf zsh-$ZSH_VER.tar.xz 
 
@@ -20,7 +19,7 @@ ADD config.modules ./config.modules-new
 RUN cp config.modules-new config.modules
 RUN make && make install
 WORKDIR run
-RUN cp /lib/x86_64-linux-gnu/libtinfo.so.5 /lib/x86_64-linux-gnu/libncurses.so.5 ./
+RUN cp /lib/ld-musl-x86_64.so.1 ./libc.musl-x86_64.so.1 && cp /usr/lib/libncursesw.so.6 ./
 ADD zsh.sh .
 RUN chmod +x zsh.sh && rm zsh-*
-CMD tar -zcf /result/zsh-portable-`uname`-`uname -m`.tar.gz * && ls -sh1 /result
+CMD tar -zcf /result/zsh-portable-musl-alpine-`uname`-`uname -m`.tar.gz * && ls -sh1 /result
