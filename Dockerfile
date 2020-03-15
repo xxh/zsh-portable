@@ -15,7 +15,7 @@ RUN tar xf zsh-$ZSH_VER.tar.xz
 # Build portable zsh (https://www.zsh.org/mla/workers/2019/msg00866.html)
 #
 WORKDIR zsh-$ZSH_VER
-RUN ./configure --disable-dynamic --prefix=$PWD/run --bindir=$PWD/run --enable-etcdir=./run/etc --enable-scriptdir=./run/scripts --enable-fndir=./run/functions --enable-function-subdirs --disable-site-fndir --without-tcsetpgrp
+RUN ./configure --disable-dynamic --prefix=$PWD/run --bindir=$PWD/run --enable-etcdir=./run/etc --enable-scriptdir=./run/scripts --enable-fndir=./run/functions --enable-function-subdirs --disable-site-fndir --with-tcsetpgrp
 ADD config.modules ./config.modules-new
 RUN cp config.modules-new config.modules
 RUN make && make install
