@@ -1,4 +1,4 @@
-FROM xxh/zsh-portable-alpine
+FROM xxh/zsh-portable-musl-alpine
 VOLUME /result
 ENV ZSH_VER 5.8
 WORKDIR /zsh/zsh-$ZSH_VER/run
