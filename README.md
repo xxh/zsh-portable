@@ -1,6 +1,6 @@
 The docker containers to build portable zsh. Originally created for [xxh project](https://github.com/xxh/xxh).
 
-Help wanted! There is an idea to build static zsh binary with musl. If you know how to do it [welcome to #2](https://github.com/xxh/zsh-portable/issues/2).
+Note! The best version was created in https://github.com/romkatv/zsh-bin/ - use it fisrt.
 
 ## Building
 ### libc
