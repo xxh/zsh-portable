@@ -1,6 +1,7 @@
-The docker containers to build portable zsh. Originally created for [xxh project](https://github.com/xxh/xxh).
+| Note! The best version was created in https://github.com/romkatv/zsh-bin/ - use it fisrt. |
+|---|
 
-Note! The best version was created in https://github.com/romkatv/zsh-bin/ - use it fisrt.
+The docker containers to build portable zsh. Originally created for [xxh project](https://github.com/xxh/xxh).
 
 ## Building
 ### libc
